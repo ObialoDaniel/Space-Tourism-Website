@@ -1,0 +1,586 @@
+* {
+    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --clr-dark: #0B0D17;
+    --clr-accent: #D0D6F9;
+    --clr-white: #FFFFFF;
+    --ff-serif: 'Bellefair', serif;
+    --ff-sans-cond: 'Barlow Condensed', sans-serif;
+    --ff-sans: 'Barlow', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--ff-sans);
+  color: var(--clr-white);
+  background-color: var(--clr-dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: 0 1.5rem;
+}
+
+.primary-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0 0 2rem;
+  background: transparent;
+  transition: background 0.4s ease;
+}
+
+.primary-header.scrolled {
+  background: rgba(11, 13, 23, 0.95);
+  backdrop-filter: blur(20px);
+}   
+
+.header-inline {
+  flex: 1;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.25);
+  margin-inline: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.primary-nav {
+  display: flex;
+  list-style: none;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(40px);
+  padding-inline: 50rem;
+  -webkit-backdrop-filter: blur(40px);
+}
+
+.primary-nav li a {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 2rem 1.5rem;
+  color: var(--clr-white);
+  text-decoration: none;
+  font-family: var(--ff-sans-cond);
+  font-size: 0.875rem;
+  letter-spacing: 2.7px;
+  text-transform: uppercase;
+  border-bottom: 3px solid transparent;
+  transition: border-color 0.3s;
+}
+ 
+/* Numbered prefix in nav links */
+.primary-nav li a span {
+  font-weight: 700;
+  margin-right: 0.2em;
+}
+ 
+/* Active and hover state for nav links */
+.primary-nav li a.active,
+.primary-nav li a:hover {
+  border-bottom-color: var(--clr-white);
+}
+
+.mobile-nav-toggle {
+  display: none;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0.5rem;
+}
+
+#home {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(to right, rgba(11,13,23,0.85) 40%, rgba(11,13,23,0.3) 100%),
+    url(./assets/home/background-home-desktop.jpg) center/cover no-repeat;
+  z-index: -1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr auto; 
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  width: 100%;
+  padding-top: 0;
+  padding-bottom: 8rem;
+}
+
+.hero-pretitle {
+  font-family: var(--ff-sans-cond);
+  font-size: 0.875rem;
+  letter-spacing: 4.75px;
+  text-transform: uppercase;
+  color: var(--clr-accent);
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-family: var(--ff-serif);
+  font-size: 150px;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.hero-description {
+  margin-top: 1.5rem;
+  font-size: 1.125rem;
+  color: var(--clr-accent);
+  line-height: 1.5;
+  max-width: 48ch;
+}
+
+.btn-explore {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(9rem, 15vw, 17rem);
+  height: clamp(9rem, 15vw, 17rem);
+  border-radius: 50%;
+  background: var(--clr-white);
+  color: var(--clr-dark);
+  font-family: var(--ff-serif);
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 2px;
+  position: relative;
+  cursor: pointer;
+  border: none;
+  transition: box-shadow 0.3s;
+  align-self: center;
+  flex-shrink: 0;
+}
+
+.btn-explore::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1);
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.6s;
+  opacity: 0;
+}
+ 
+.btn-explore:hover::before {
+  transform: scale(1.5);
+  opacity: 1;
+}
+ 
+
+/* ─────────────────────────────────────────────────
+   7. DESTINATION SECTION
+───────────────────────────────────────────────── */
+ 
+#destination {
+  position: relative;
+  min-height: 100vh;
+  padding: 8rem 0 4rem;
+  background: var(--clr-dark);
+}
+ 
+/* Side-by-side: planet image | tab panel */
+.destination-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+ 
+.destination-image {
+  display: flex;
+  justify-content: center;
+}
+ 
+/* Planet image — slowly rotates */
+.planet-img {
+  width: min(480px, 100%);
+  border-radius: 50%;
+  animation: rotate 60s linear infinite;
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.15));
+}
+ 
+/* Tab button row */
+.destination-tabs {
+  display: flex;
+  gap: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  margin-bottom: 2rem;
+}
+ 
+.tab-btn {
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--clr-accent);
+  font-family: var(--ff-sans-cond);
+  font-size: 0.875rem;
+  letter-spacing: 2.7px;
+  text-transform: uppercase;
+  padding: 0 0 0.75rem;
+  cursor: pointer;
+  transition: color 0.3s, border-color 0.3s;
+  margin-bottom: -1px; /* overlap the container border */
+}
+ 
+.tab-btn.active,
+.tab-btn:hover {
+  color: var(--clr-white);
+  border-bottom-color: var(--clr-white);
+}
+ 
+/* Destination name heading */
+.destination-name {
+  font-family: var(--ff-serif);
+  font-size: clamp(3.5rem, 7vw, 6.25rem);
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+ 
+/* Description paragraph */
+.destination-desc {
+  color: var(--clr-accent);
+  line-height: 1.8;
+  font-size: 1rem;
+  max-width: 45ch;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+ 
+/* Stats row: distance | travel time */
+.destination-meta {
+  display: flex;
+  gap: 5rem;
+  margin-top: 2rem;
+}
+ 
+.meta-item label {
+  display: block;
+  font-family: var(--ff-sans-cond);
+  font-size: 0.875rem;
+  letter-spacing: 2.7px;
+  text-transform: uppercase;
+  color: var(--clr-accent);
+  margin-bottom: 0.5rem;
+}
+ 
+.meta-item p {
+  font-family: var(--ff-serif);
+  font-size: 1.75rem;
+  text-transform: uppercase;
+}
+ 
+ 
+/* ─────────────────────────────────────────────────
+   8. CREW SECTION
+───────────────────────────────────────────────── */
+ 
+#crew {
+  min-height: 100vh;
+  padding: 8rem 0 0;
+  background: linear-gradient(to bottom, var(--clr-dark) 0%, #12152a 100%);
+  overflow: hidden;
+}
+ 
+/* Side-by-side: crew info | crew portrait */
+.crew-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: end;
+  gap: 2rem;
+}
+ 
+.crew-info {
+  padding-bottom: 4rem;
+}
+ 
+/* Role label (e.g. "Commander") */
+.crew-role {
+  font-family: var(--ff-serif);
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 400;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 0.5rem;
+}
+ 
+/* Crew member name */
+.crew-name {
+  font-family: var(--ff-serif);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+ 
+/* Bio paragraph */
+.crew-bio {
+  color: var(--clr-accent);
+  line-height: 1.8;
+  max-width: 45ch;
+  margin-bottom: 3rem;
+}
+ 
+/* Dot navigation row */
+.crew-dots {
+  display: flex;
+  gap: 1rem;
+}
+ 
+.dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.17);
+  cursor: pointer;
+  transition: background 0.3s;
+  border: none;
+}
+ 
+.dot.active,
+.dot:hover {
+  background: var(--clr-white);
+}
+ 
+/* Portrait image container */
+.crew-image {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+ 
+.crew-img {
+  max-height: 65vh;
+  object-fit: contain;
+  object-position: bottom;
+  filter: drop-shadow(0 -20px 50px rgba(255, 255, 255, 0.05));
+}
+ 
+ 
+/* ─────────────────────────────────────────────────
+   9. TECHNOLOGY SECTION
+───────────────────────────────────────────────── */
+ 
+#technology {
+  min-height: 100vh;
+  padding: 8rem 0;
+}
+ 
+/* Three columns: number buttons | text | image */
+.tech-layout {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+ 
+/* Vertical number buttons */
+.tech-numbers {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+ 
+.num-btn {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: transparent;
+  color: var(--clr-white);
+  font-family: var(--ff-serif);
+  font-size: 2rem;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s;
+}
+ 
+.num-btn.active,
+.num-btn:hover {
+  background: var(--clr-white);
+  color: var(--clr-dark);
+  border-color: var(--clr-white);
+}
+ 
+/* "The terminology…" small label */
+.tech-label {
+  font-family: var(--ff-sans-cond);
+  font-size: 0.875rem;
+  letter-spacing: 2.7px;
+  text-transform: uppercase;
+  color: var(--clr-accent);
+  margin-bottom: 1rem;
+}
+ 
+/* Technology name heading */
+.tech-name {
+  font-family: var(--ff-serif);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+ 
+/* Description paragraph */
+.tech-desc {
+  color: var(--clr-accent);
+  line-height: 1.8;
+  max-width: 45ch;
+}
+ 
+/* Technology image */
+.tech-image img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+ 
+ 
+/* ─────────────────────────────────────────────────
+   10. ANIMATIONS & TRANSITIONS
+───────────────────────────────────────────────── */
+ 
+/* Slide up + fade in — used on hero text */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+ 
+/* Scale in — used on Explore button */
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.5); }
+  to   { opacity: 1; transform: scale(1); }
+}
+ 
+/* Slow rotation — used on planet image */
+@keyframes rotate {
+  to { transform: rotate(360deg); }
+}
+ 
+/* Fade + lift — applied by JS when switching tabs */
+.fade {
+  animation: fadeContent 0.4s ease;
+}
+ 
+@keyframes fadeContent {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+ 
+ 
+/* ─────────────────────────────────────────────────
+   11. RESPONSIVE — MOBILE ( ≤ 768px )
+───────────────────────────────────────────────── */
+ 
+@media (max-width: 768px) {
+ 
+  /* Hide the decorative line in header */
+  .header-line {
+    display: none;
+  }
+ 
+  /* Show hamburger button */
+  .mobile-nav-toggle {
+    display: block;
+  }
+ 
+  /* Nav slides in from the right as a panel */
+  .primary-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(70vw, 300px);
+    flex-direction: column;
+    padding: 8rem 2rem 2rem;
+    gap: 0;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(40px);
+    transform: translateX(100%);
+    transition: transform 0.4s ease;
+    z-index: 99;
+  }
+ 
+  /* JS adds data-visible="true" to show the panel */
+  .primary-nav[data-visible="true"] {
+    transform: translateX(0);
+  }
+ 
+  /* Switch active indicator from bottom border to left border */
+  .primary-nav li a {
+    padding: 1rem 0;
+    border-bottom: none;
+    border-left: 3px solid transparent;
+    padding-left: 1rem;
+  }
+ 
+  .primary-nav li a.active,
+  .primary-nav li a:hover {
+    border-left-color: var(--clr-white);
+    border-bottom: none;
+  }
+ 
+  /* Stack hero content vertically and center it */
+  .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    justify-items: center;
+  }
+ 
+  .btn-explore {
+    margin-top: 2rem;
+  }
+ 
+  /* Stack all multi-column sections to single column */
+  .destination-grid,
+  .crew-grid,
+  .tech-layout {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+ 
+  /* Center meta items and tabs on mobile */
+  .destination-meta  { justify-content: center; flex-wrap: wrap; }
+  .crew-dots         { justify-content: center; }
+  .destination-tabs  { justify-content: center; }
+ 
+  /* Horizontal number buttons on mobile */
+  .tech-numbers {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
