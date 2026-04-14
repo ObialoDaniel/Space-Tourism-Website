@@ -19,7 +19,7 @@ Users are able to:
 
 ### Screenshot
 
-![Screenshot of the project](./assets/screenshot.png)
+![Screenshot of the project](./Screenshot%20(89).png), ![Destination](./Screenshot%20(90).png), ![Crew](./Screenshot%20(91).png), ![Technology](./Screenshot%20(92).png)
 
 ---
 
