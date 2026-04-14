@@ -6,7 +6,7 @@ window.addEventListener('scroll', () => {
 
 
 const toggle = document.querySelector('.mobile-nav-toggle');
-const nav    = document.getElementById('hamburger-icon');
+const nav    = document.getElementById('primary-navigation');
 
 
 toggle.addEventListener('click', () => {
